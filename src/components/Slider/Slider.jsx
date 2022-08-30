@@ -2,34 +2,37 @@ import React from "react";
 import "./Slider.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import { useGlobalState } from "./../../GlobalState";
 
 const Slider = () => {
+  const { width } = useGlobalState();
   return (
     <div className="slider">
-      <div className="line"></div>
-      <Carousel>
+      <Carousel autoPlay infiniteLoop showArrows emulateTouch>
         <div
           className="carousel-item"
-          style={{ backgroundImage: "url(https://www.serbia.travel/files/1-40_VODOPAD_VRELO-0-1280x768.jpg)" }}
-        >
-          <p className="legend">Legend</p>
-        </div>
+          style={{
+            backgroundImage:
+              "url(https://th.bing.com/th/id/R.ef99528fe6485e0fe578a568ed19c538?rik=YoV6fCIa3B65mw&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2fb%2f0%2fd%2f820810-full-hd-nature-wallpapers-2560x1600-screen.jpg&ehk=vIysebK27uH7%2bAO1A5rcQ1tRNlaayL98VI%2b1tyfJCAE%3d&risl=&pid=ImgRaw&r=0)",
+          }}
+        ></div>
 
         <div
           className="carousel-item"
           style={{
             backgroundImage:
-              "url(https://media.cntraveller.com/photos/611bf0b8f6bd8f17556db5e4/1:1/w_2000,h_2000,c_limit/gettyimages-1146431497.jpg)",
+              "url(https://th.bing.com/th/id/R.53449fa87702af80374c45b87080c639?rik=a%2bjmkDp49CIBMQ&riu=http%3a%2f%2fwww.pixelstalk.net%2fwp-content%2fuploads%2f2016%2f08%2fNature-wallpapers-Full-HD-backgroud.jpg&ehk=2CjYMG528OFuEMrzc%2bCNmTfQR9WPzT4GP5fwmHMh54I%3d&risl=&pid=ImgRaw&r=0)",
           }}
         ></div>
         <div
           className="carousel-item"
           style={{
             backgroundImage:
-              "url(https://www.nestle.com/sites/default/files/styles/da_vinci_header_hero_desktop/public/2022-02/sustainability-nature-forest-river-article-header-fw.jpg?h=a612ed85&itok=1mqqgg1L)",
+              "url(https://www.pixelstalk.net/wp-content/uploads/2016/08/Best-Nature-Full-HD-Images-For-Desktop.jpg)",
           }}
         ></div>
       </Carousel>
+      {width <= 320 && <div className="navigation">Lorem Ipsum</div>}
     </div>
   );
 };

@@ -1,22 +1,32 @@
 .navbar-container {
   width: 100%;
-  height: 8vh;
-  padding: 0 5vw;
+  height: 6vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 .navbar-content {
   height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  padding: 0 3vw;
 }
 .logo img,
 .search-button img,
 .burger-button img {
-  height: 3vh;
+  height: 2.3vh;
+  cursor: pointer;
 }
 a img {
-  height: 3vh;
+  height: 2.3vh;
+}
+a img:hover {
+  color: #20bf55;
 }
 .search-button,
 .burger-button {
@@ -40,13 +50,181 @@ a img {
   text-transform: uppercase;
   color: rgb(43, 43, 43);
 }
+.navbar-links a:hover {
+  color: greenyellow;
+}
+.navbar-links a:active {
+  color: green;
+}
+.navbar-links a:focus {
+  color: rgb(1, 136, 118);
+}
+.navbar-links-mobile {
+  position: absolute;
+  top: 5vh;
+  left: 0;
+  z-index: 100 !important;
+  background-color: white;
+  height: fit-content;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+}
+.navbar-links-mobile a {
+  font-size: 1.2rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: rgb(43, 43, 43);
+  padding: 1vh 1rem;
+}
+.logo {
+  height: 2.3vh;
+  width: 2rem;
+  background-color: gray;
+  -webkit-mask: url(../../assets/svg/cloud.svg) no-repeat center;
+  mask: url(../../assets/svg/cloud.svg) no-repeat center;
+}
+.heart {
+  height: 2.3vh;
+  width: 2rem;
+  background-color: gray;
+  -webkit-mask: url(../../assets/svg/heart.svg) no-repeat center;
+  mask: url(../../assets/svg/heart.svg) no-repeat center;
+}
+.burger {
+  height: 2.3vh;
+  width: 2rem;
+  background-color: gray;
+  -webkit-mask: url(../../assets/svg/burger.svg) no-repeat center;
+  mask: url(../../assets/svg/burger.svg) no-repeat center;
+}
+.home {
+  height: 2.3vh;
+  width: 2rem;
+  background-color: gray;
+  -webkit-mask: url(../../assets/svg/home.svg) no-repeat center;
+  mask: url(../../assets/svg/home.svg) no-repeat center;
+}
+.our-work {
+  height: 2.3vh;
+  width: 2rem;
+  background-color: gray;
+  -webkit-mask: url(../../assets/svg/our-work.svg) no-repeat center;
+  mask: url(../../assets/svg/our-work.svg) no-repeat center;
+}
+.about {
+  height: 2.3vh;
+  width: 2rem;
+  background-color: gray;
+  -webkit-mask: url(../../assets/svg/about.svg) no-repeat center;
+  mask: url(../../assets/svg/about.svg) no-repeat center;
+}
+.email {
+  height: 2.3vh;
+  width: 2rem;
+  background-color: gray;
+  -webkit-mask: url(../../assets/svg/email.svg) no-repeat center;
+  mask: url(../../assets/svg/email.svg) no-repeat center;
+}
+.burger {
+  height: 2.3vh;
+  width: 2rem;
+  background-color: gray;
+  -webkit-mask: url(../../assets/svg/burger.svg) no-repeat center;
+  mask: url(../../assets/svg/burger.svg) no-repeat center;
+}
+.search {
+  height: 2.3vh;
+  width: 2rem;
+  background-color: gray;
+  -webkit-mask: url(../../assets/svg/search.svg) no-repeat center;
+  mask: url(../../assets/svg/search.svg) no-repeat center;
+}
+.navbar-links-mobile a:hover,
+.burger:hover,
+.search:hover,
+.cloud:hover,
+.home:hover,
+.about:hover,
+.our-work:hover,
+.email:hover {
+  background-color: rgb(119, 179, 29);
+}
+.navbar-links-mobile a:active,
+.burger:active,
+.search:active,
+.cloud:active,
+.home:active,
+.about:active,
+.our-work:active,
+.email:active {
+  background-color: green;
+}
+.navbar-links-mobile a:focus,
+.burger:focus,
+.search:focus,
+.cloud:focus,
+.home:focus,
+.about:focus,
+.our-work:focus,
+.email:focus {
+  background-color: rgb(1, 136, 118);
+}
+.st0 {
+  fill: blue !important;
+}
+.search-dropdown {
+  position: absolute;
+  top: 5vh;
+  left: 0;
+  z-index: 100 !important;
+  padding: 1vh 1rem;
+  background-color: white;
+  min-height: 5vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  width: 100%;
+}
+.search-dropdown input {
+  width: 40vw;
+  font-size: 1.2rem;
+  height: fit-content;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid gray;
+}
+
 @media screen and (max-width: 768px) {
   .navbar-container {
     min-height: 8vh;
     height: fit-content;
-    padding: 2vh 3vw;
+    padding: 0;
+  }
+  .navbar-content {
+    padding: 1rem;
   }
   .navbar-links {
     gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .navbar-container {
+    min-height: 8vh;
+    height: fit-content;
+    padding: 0;
+  }
+  .navbar-content {
+    padding: 1rem;
+  }
+  .navbar-links {
+    gap: 1rem;
+  }
+  .search-dropdown input {
+    width: 80vw;
   }
 }

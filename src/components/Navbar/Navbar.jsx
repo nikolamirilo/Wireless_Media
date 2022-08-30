@@ -1,49 +1,88 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-import burger from "../../assets/svg/burger.svg";
-import searchImage from "../../assets/svg/search.svg";
-import home from "../../assets/svg/home.svg";
-import about from "../../assets/svg/about.svg";
-import ourWork from "../../assets/svg/our-work.svg";
-import email from "../../assets/svg/email.svg";
 import { useGlobalState } from "./../../GlobalState";
 
 const Navbar = () => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { width } = useGlobalState();
   console.log(width);
+
+  useEffect(() => {
+    if (width <= 320) {
+      setIsNavbarOpen(false);
+    } else {
+      setIsNavbarOpen(true);
+    }
+  }, [width]);
+
   return (
     <div className="navbar-container">
       <div className="navbar-content">
-        <div className="logo">
-          {/* <img src={logo} alt="Logo" /> */} <h2>Logo</h2>
-        </div>
+        <div className="logo"></div>
 
         <div
-          className="navbar-links"
-          style={{ display: (width < 320) & !isNavbarOpen ? "none" : (width < 320) & isNavbarOpen ? "flex" : null }}
+          className={width > 320 ? "navbar-links" : "navbar-links-mobile"}
+          style={{
+            display: !isNavbarOpen ? "none" : "flex",
+          }}
         >
-          <Link to="/">{width > 768 || width < 320 ? "Home /" : <img src={home} alt="Home" />}</Link>
-          <Link to="/about-us">{width > 768 || width < 320 ? "About Us /" : <img src={about} alt="About" />}</Link>
-          <Link to="/our-work">{width > 768 || width < 320 ? "Our Work /" : <img src={ourWork} alt="Our Work" />}</Link>
-          <Link to="/contact">{width > 768 || width < 320 ? "Email /" : <img src={email} alt="Email" />}</Link>
+          <Link to="/">
+            {(width > 320) & (width < 768) ? <div className="home"></div> : "Home"}
+            {"   "}
+            {width > 768 && "/"}
+          </Link>
+          <Link to="/about-us">
+            {(width > 320) & (width < 768) ? <div className="about"></div> : "About Us"}
+            {"   "}
+            {width > 768 && "/"}
+          </Link>
+          <Link to="/our-work">
+            {(width > 320) & (width < 768) ? <div className="our-work"></div> : "Our Work"}
+            {"   "}
+            {width > 768 && "/"}
+          </Link>
+          <Link to="/contact">
+            {(width > 320) & (width < 768) ? <div className="email"></div> : "Email"}
+            {"   "}
+            {width > 768 && "/"}
+          </Link>
         </div>
+
         <div className="right-content">
-          <button className="burger-button">
-            <img src={burger} alt="Burger" />
-          </button>
-          {width < 320 && (
+          {width <= 320 && (
             <button
-              className="search-button"
+              className="burger-button"
               onClick={() => {
-                setIsNavbarOpen(true);
+                if (isNavbarOpen) {
+                  setIsNavbarOpen(false);
+                } else {
+                  setIsNavbarOpen(true);
+                }
               }}
             >
-              <img src={searchImage} alt="Search" />
+              <div className="burger"></div>
             </button>
           )}
+          <button
+            className={"search-button"}
+            onClick={() => {
+              if (isSearchOpen) {
+                setIsSearchOpen(false);
+              } else {
+                setIsSearchOpen(true);
+              }
+            }}
+          >
+            <div className="search"></div>
+          </button>
         </div>
+        {isSearchOpen && (
+          <div className="search-dropdown" style={{ display: width > 480 && "none" }}>
+            <input type="search" />
+          </div>
+        )}
       </div>
     </div>
   );
